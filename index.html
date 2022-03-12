@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = 'utf-8'>
+        <meta name = "viewport" content = "width=device-width">
+        <title>Rock Paper Scissors Game</title>
+    </head>
+    <body>
+        This is a web app for rock paper scissors! Play using the console (F12).
+        <script>
+            function computerPlay(){
+                randNum = Math.random()*3+1
+                choice = Math.floor(randNum);
+                switch (choice){
+                  case 1:
+                     return "rock";
+                   case 2:
+                      return "paper";
+                  default:
+                       return "scissors";
+                }
+            }
+
+            function userPlay(){
+                    choice = prompt('select rock, paper, or scissors: ');
+                    choice = choice.toLowerCase();
+                    return choice;  
+                }
+
+            function testRPS(num){
+                counter = 0;
+                cRock = 0;
+                cPaper = 0;
+                cScissors = 0;
+                while (counter < num){
+                    counter++;
+                    result = computerPlay();
+                    switch (result){
+                        case "rock":
+                            cRock++;
+                            break;
+                        case "paper":
+                            cPaper++;
+                            break;
+                        default:
+                            cScissors++;
+                            break;
+                    }
+                }
+                return `Rock:  ${cRock} \nPaper:  ${cPaper} \nScissors:  ${cScissors}\n`
+            }
+
+            function evaluate(player, computer){  //from p1 perspective: 0-1-2 -> lose-win-tie
+                if (player == computer) return 2;
+                else if (player == 'rock' && computer == 'scissors') return 1;
+                else if (player == 'rock' && computer == 'paper') return 0;
+                else if (player == 'paper' && computer == 'rock') return 1;
+                else if (player == 'paper' && computer == 'scissors') return 0;
+                else if (player == 'scissors' && computer == 'paper') return 1;
+                else if (player == 'scissors' && computer == 'rock') return 0;
+                
+            }
+
+            function roundRPS(){
+                player = userPlay();
+                comp = computerPlay();
+                result = evaluate(player,comp);
+                switch (result){
+                    case 0:
+                        alert(`You lose! ${comp} beats ${player}.`);
+                        return 0;
+                    case 1:
+                        alert(`You win! ${player} beats ${comp}.`);
+                        return 1;
+                    default:
+                        alert(`Tie! ${player} ties ${comp}.`);
+                        return 2;
+                }
+            }
+
+            function autoRPS(){
+                comp1 = computerPlay();
+                comp2 = computerPlay();
+                result = evaluate(comp1,comp2);
+                return result;
+            }
+
+            function autoGame(num){
+                playerWin = 0;
+                computerWin = 0;
+                for (let i = 0; i < num;i++){
+                    result = autoRPS();
+                    if (result == 0) computerWin++;
+                    if (result == 1) playerWin++;
+                }
+                if (playerWin > computerWin){
+                    alert(`Congratulations! Computer 1 beat computer 2 ${playerWin} to ${computerWin}!`);
+                }
+                else if (playerWin == computerWin){
+                    alert(`It's a tie! Computer 1 tied computer 2 at ${playerWin} wins.`);
+                }
+                else alert(`Uh oh! Computer 1 lost to computer 2 ${playerWin} to ${computerWin}!`);
+            }
+
+            function playGame(num){
+                playerWin = 0;
+                computerWin = 0;
+                for (let i = 0; i < num;i++){
+                    result = roundRPS();
+                    if (result == 0) computerWin++;
+                    if (result == 1) playerWin++;
+                }
+                if (playerWin > computerWin){
+                    alert(`Congratulations! You beat the computer ${playerWin} to ${computerWin}!`);
+                }
+                else if (playerWin == computerWin){
+                    alert(`It's a tie! You tied the computer at ${playerWin} wins.`);
+                }
+                else alert(`Uh oh! You lost to the computer ${playerWin} to ${computerWin}!`);
+            }
+        </script>
+    </body>
+</html>
