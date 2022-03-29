@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = 'utf-8'>
+        <meta http-equiv = 'XU-A-Compatible' content ='IE=edge'>
+        <meta name = "viewport" content = "width=device-width">
+        <title>Rock Paper Scissors Game</title>
+        <script src = 'script.js' defer></script>
+        <link rel = "stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class = 'main_container'>
+            <div class = 'sidebar'>
+                <label for='num_rounds'>Best of how many rounds?</label>
+                <select id = 'num_rounds'>
+                    <option value= '1'>1</option>
+                    <option value= '3' selected>3</option>
+                    <option value= '5'>5</option>
+                    <option value= '7'>7</option>
+                    <option value= '9'>9</option>
+                </select>
+                <div id = 'start'>
+                    <button id = 'start_button'>Begin!</button>
+                </div>
+                <div class = 'score'>
+
+                </div>
+            </div>
+            <div class = 'viewport'>
+                <div class = 'title'>
+                    <p>Rock Paper Scissors</p>
+                </div>
+                <div class = 'clickbox'>
+                    <button class = 'move_button' id = 'Rock'>Rock</button>
+                    <button class = 'move_button' id = 'Paper'>Paper</button>
+                    <button class = 'move_button' id = 'Scissors'>Scissors</button>
+                </div>
+                <div class = 'graphics'>
+                    <div id = 'user_sel'>
+                        <p>Player</p>
+                        <div></div>
+                    </div>
+                    <div id = 'cpu_sel'>
+                        <p>CPU</p>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
